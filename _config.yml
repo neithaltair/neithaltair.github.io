@@ -1,5 +1,5 @@
 # Site settings
-title: Jekyll-Uno
+title: Neith Altair
 description: 'Neith Altair Machuca Bernal'
 #url: 'http://joshgerdes.com/jekyll-uno'
 url: 'https://neithaltair.github.io'
@@ -9,12 +9,12 @@ baseurl: '/'
 # disable_landing_page: true
 
 author:
-  name: 'Josh Gerdes'
-  email: josh@joshgerdes.com
-  twitter_username: joshgerdes
-  facebook_username: joshgerdes
-  github_username:  joshgerdes
-  linkedin_username:  joshgerdes
+  name: 'Neith Altair'
+  email: neith.altair.na@gmail.com
+  twitter_username: 
+  facebook_username: 
+  github_username:  neithaltair
+  linkedin_username:  neithaltair
 
 defaults:
   -
