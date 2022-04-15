@@ -1,6 +1,10 @@
 # Site settings
 title: Neith Altair
-description: 'Neith Altair Machuca Bernal'
+description: 'Estudiante de ingenieria apasionado por los sistemas la ciberseguridad. 
+
+Etichal hacking, ejecución de análisis de vulnerabilidades, OSINT, pentesting entornos web y móvil, desarrollo de scripts en Bash, Python, manejo de Linux, conocimiento en tecnologías de desarrollo web.
+
+Implementación de Python para creación de automatizaciones.'
 #url: 'http://joshgerdes.com/jekyll-uno'
 url: 'https://neithaltair.github.io'
 baseurl: '/'
