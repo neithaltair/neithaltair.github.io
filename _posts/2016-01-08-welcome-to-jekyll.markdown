@@ -1,6 +1,6 @@
 ---
 title:  "Primer blog!"
-date:   2016-01-08
+date:   15-04-2022
 categories: [jekyll]
 tags: [aa,jj]
 ---
@@ -17,7 +17,7 @@ end
 print_hi('Tom')
 #=> prints 'Hi, Tom' to STDOUT.
 ```
-![image](images/profile.jpeg)
+![image](../genes/profile.jpeg)
 
 Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
 
