@@ -1,5 +1,5 @@
 ---
-title:  "Comandos Metasploit"
+title:  "Tabla de máscaras de red"
 date:   2022-04-25
 categories: [Redes]
 tags: [Máscaras,Red,Segmento]
