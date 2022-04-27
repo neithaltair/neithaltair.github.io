@@ -1,5 +1,5 @@
 ---
-title:  "Tabla de máscaras de red"
+title:  "Dirección DNS Linux"
 date:   2022-04-25
 categories: [Redes]
 tags: [DNS,Red,Segmento]
