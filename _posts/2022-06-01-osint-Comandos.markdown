@@ -33,8 +33,11 @@ Comandos Osint `Osint`.
  
  rm -r *.xml
 
-```
 
+ #Gobuster
+ gobuster dir -u https://www.$1 -w /usr/share/wordlists/dirb/common.txt | grep "Status: 301" >> $1/subDomains/gobuster
+
+```
 
 ``` bash
 
