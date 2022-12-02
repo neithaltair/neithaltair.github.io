@@ -7,6 +7,6 @@ tags: [JuiceShop,Documento]
 
 
 
-![Documento](/genes/documentacion/InformeVulnerabilidades.pdf)
+![pdf](/genes/documentacion/InformeVulnerabilidades.pdf){width=900px}
 
 *(1,1)*
