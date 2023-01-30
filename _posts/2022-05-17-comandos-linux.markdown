@@ -34,6 +34,63 @@ $> cmp test1 test2
 $> diff test1 test2 
 ```
 
+6) Find
+``` bash
+$> sudo find / -name "archivo*" 
+# Encontrar archivos ocultos
+$> sudo find . -type f -name ".*"
+# Directorios vacíos
+$> find . -type f -empty
+# Todos los archivos ejecutables
+# -perm = permisos de los archivos
+$> find . -perm /a=x
+```
+
+7) Ip, grep, awk
+``` bash
+$> ip a | grep eth0 | grep inet | awk '{print $2}'
+10.0.2.15/24
+```
+
+8) DNS Server
+``` bash
+$> resolvectl status
+```
+
+9) ping
+``` bash
+$> ping -c 3 google.com
+#Especificar tamaño del paquete
+$> ping -c 3 -s 500 google.com
+```
+
+10) Puertos abiertos en la maquina netstat
+``` bash
+$> netstat 
+$> ss tulpn
+```
+
+11) uname Información del sistema operativo
+``` bash
+$> uname -a
+$> sudo apt install neofetch
+$> neofetch
+```
+
+12) procesos en la máquina. 
+``` bash 
+$> ps 
+$> htop
+#Matar proceso en la maquina
+$> kill -9 <processID> #-9 para indicar que se matará el proceso. 
+```
+
+13) historial de comandos en la consola
+``` bash
+$> history
+```
+
+
 
 
 
