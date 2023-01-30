@@ -5,13 +5,37 @@ categories: [Linux]
 tags: [Linux,Comandos,Bash]
 ---
 
-Dispositivos conectados en la misma red. 
-
+1) Dispositivos conectados en la misma red. 
 ``` bash
-
-$ arp 
-
+$> arp 
 ```
+
+2) Obtener información de un usuario en Linux. 
+``` bash
+$> sudo apt install finger
+$> finger <username> 
+```
+
+3) Cambiar contraseña de usuarios
+``` bash
+$> sudo passwd <username>
+$> passwd
+```
+
+4) Zip - unzip
+``` bash
+$> zip comprimido test* 
+$> unzip comprimido
+```
+
+5) Comparar y encontrar diferencia entre dos archivos. 
+``` bash
+$> cmp test1 test2 
+$> diff test1 test2 
+```
+
+
+
 
 *(1,1)*
 
