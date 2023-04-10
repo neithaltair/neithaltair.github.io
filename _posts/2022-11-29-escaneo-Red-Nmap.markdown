@@ -19,7 +19,7 @@ nmap -PN -sC -sV -p- -oA <output> <ip> #Full scan, demorado, -oA es opcional
 
 nmap -sU -sC -sV -oA <output> <ip> #udpScan
 
-nmap -sV -PN --script vulners <ip> #scan search vulnerabilities
+nmap -sV -Pn --script vulners <ip> #scan search vulnerabilities
 ```
 
 
