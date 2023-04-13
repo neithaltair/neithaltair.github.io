@@ -1,25 +1,21 @@
 ---
-title:  "Test 2023"
-date:   2023-04-10
-categories: [Scan]
-tags: [Linux,Network,Nmap]
+title:  "Password Autocomplete"
+date:   2023-04-13
+categories: [Pentest]
+tags: [Vulnerabilities,Web,Pentesting]
 ---
 
-Escaneo Red con `NMAP`. 
+Que configuraciones permiten el autocompletado de contraseñas, cuales no. 
 
-Scan network with `NMAP`
+Una reciente configuración es: `<input type="password" autocomplete="current-password" />"`
+
+Esta configuración permite que el navegador que tenga la contraseña del usuario la introduzca. `(Riesgo de seguridad)`
+
+![image](/genes/vulnerabilidades/autocomplete/autocomplete.png)
+
+
 ``` bash
-nmap -sP -p <ip> #ping scan
 
-nmap -PN -sV --top-ports 50 --open <ip> #search smb vuln
-
-nmap -PN --script smb-vuln* -p139,445 <ip> #classic scan
-
-nmap -PN -sC -sV -p- -oA <output> <ip> #Full scan, demorado, -oA es opcional
-
-nmap -sU -sC -sV -oA <output> <ip> #udpScan
-
-nmap -sV -PN --script vulners <ip> #scan search vulnerabilities
 ```
 
 
