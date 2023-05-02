@@ -1,28 +1,28 @@
 ---
 title:  "Janus Vulnerability Mobile"
-date:   2023-04-13
+date:   2023-05-02
 categories: [Pentest]
-tags: [Vulnerabilities,Web,Pentesting]
+tags: [Vulnerabilities,Mobile,Android]
 ---
 
-Que configuraciones permiten el autocompletado de contraseñas, cuales no. 
+ `Signer Certificate` Al momento de realizar el análisis estático de una vulnerabilidad móvil se pude evidenciar las firmas con las que cuenta. 
 
-Una reciente configuración es: `<input type="password" autocomplete="current-password" />"`
+`v1 signature: True
+v2 signature: True
+v2 signature: False`
 
-Esta configuración permite que el navegador que tenga la contraseña del usuario la introduzca. `(Riesgo de seguridad)`
+De acuerdo a las firmas que contenga puede o no ser vulnerable a Janus: 
+                                * V1 = vulnerablea Janus en todas las versiones de Android. 
+                                * V2 = mitiga vulnerabilidad en Janus desde Android 5.0 a superiores de 8.0. 
+                                * v3 = la firma v3 es un complemento y refuerzo de seguridad para la aplicación, en caso de que se identifiquen nuevas vulnerabilidades que no puedan ser mitigadas solo con la v2. 
 
-![image](/genes/vulnerabilidades/autocomplete/autocomplete.png)
+![image](/genes/vulnerabilidades/janus/janusFirma.png)
 
-Configuración ideal para recomendar contraseñas seguras al usuario `autocomplete="new-password"`, no es funcional utilizar esta configuración si se utiliza un autocompletado de contraseña. 
-
-Una configuración correcta para deshabilitar el autocompletado desde el lado del desarrollador es: 
-
-``` html
-<input type="password" autocomplete="off" />
-
-```
-
-`Es posible que el navegador de la opción de guardar la contraseña, pero es importante que el desarrollo de la página sobre todo para páginas de banca no den la opción de guardar o autocompletar las contraseñas del usuario.`
+Configuración ideal para aumentar la serguridad del aplicativo es contar con las 3 versiones de las firmas.
+ 
+ `v1 signature: True
+v2 signature: True
+v2 signature: True`
 
 
 *(1,1)*
