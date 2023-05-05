@@ -1,8 +1,8 @@
 ---
-title:  "Desinstalar .deb Linux"
-date:   2022-04-25
-categories: [Tip]
-tags: [Desinstalar,Linux,Deb]
+title:  "Instalar/desinstalar Aplicaciones"
+date:   2022-04-25 - 2023-04-05
+categories: [Comandos]
+tags: [Desinstalar,Instalar,Linux,Deb]
 ---
 
 Comandos para desinstalar .deb en linux. 
@@ -23,6 +23,16 @@ $ sudo apt remove my-app
 sudo apt-get remove packagename
 
 dpkg --remove packagename
+```
+
+Comandos para instalar .bin en linux.
+
+**-Comando para instalación y ejecución**
+
+```bash
+sudo chmod a+x name_of_file.bin
+
+./name_of_file.bin
 ```
 
 *(1,1)*
