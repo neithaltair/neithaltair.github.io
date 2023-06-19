@@ -1,10 +1,11 @@
 # Site settings
 title: Neith Altair
-description: 'Estudiante de ingenieria, apasionado por los sistemas y la ciberseguridad. 
+description: 'Apasionado por los sistemas, tecnología y la ciberseguridad. 
 
 Etichal hacking, análisis de vulnerabilidades, OSINT, pentesting entornos web y móvil, desarrollo de scripts en Bash, Python, manejo de Linux, conocimiento en tecnologías de desarrollo web.
 
 Implementación de Python para creación de automatizaciones.'
+
 #url: 'http://joshgerdes.com/jekyll-uno'
 url: 'https://neithaltair.github.io'
 baseurl: '/'
@@ -14,7 +15,7 @@ baseurl: '/'
 
 author:
   name: 'Neith Altair'
-  email: neith.altair.na@gmail.com
+  email: altairmbernal@gmail.com
   twitter_username: 
   facebook_username: 
   github_username:  neithaltair
