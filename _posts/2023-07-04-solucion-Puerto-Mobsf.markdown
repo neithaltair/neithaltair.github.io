@@ -7,6 +7,8 @@ tags: [RedTeam,Mobsf,Settings]
 
 Durante el uso de mobsf en el puerto 8000, identifique que a pesar de haber cerrado la terminal, el proceso no se cerró de la manera adecuada y el puerto 8000 seguía ocupado al intentar ejecutar la herramienta. 
 
+Al ejecutar la herramienta en otro puerto, cuando intente realizar el análisis dinámico, nigun emulador establecia conexión y no me permitia continuar con el proceso, una vez, volví a ejecutar en el puerto 8000, logré la respectiva conexión para realizar el análisis dinámico. 
+
 De manera que me toco revisar que procesos pudieron quedar pegados al puerto y "matarlos". 
 
 
