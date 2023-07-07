@@ -29,6 +29,28 @@ En la linea que contenga la información de `hardwareAccelerated="true"`.
 
 Se supone que para lograr este primer bypass, basta con cambiar el valor de True a False, volver a empaquetar la aplicación e intenter ejecutarla. 
 
+El dilema es que la herramienta o el comando de apktool no me sirve, me genera varios errores y no compila la aplcación, peeero con `apktool_2.7.0.jar` si se puede pa.  
+
+07/07 tercer día de intento, descomprimí y comprimí la aplicación unas 6 veces en estos días, debido a que no lograba ejecutar el aplicativo, me acabo de dar cuenta, de que esta bien el error y posiblemente en el siguiente paso se solucionará, ¡ Detalles !. 
+
+Se busca la siguiente linea ya que es el mensaje de erro obtenido por la aplicación `Emulator Detected`. 
+
+![image](/genes/dvba/emulatordetected.png)
+
+Según mis opciones abro el archivo MainActivity.smali, pero debería ser .jar, al parecer es por la no implementación de la herramienta `apkx` herramienta, que se descarga, pero no ejecuta...... MALDITHA ZEA. 
+
+Al parecer los soucione editando el archivo aptx alojado en la ruta /usr/local/bin, utiliza pyhton y no tenia python, pero si python3, solo era ajustar la ubicación. Primero con which python, despúes remplazar y funciona. 
+
+![image](/genes/dvba/apkx.png)
+
+Se utiliza la herramienta de apkx que sirve para: "Extrae el código fuente de Java directamente desde el APK. Útil para experimentar con diferentes convertidores/descompiladores sin tener que preocuparse por la configuración del classpath y los argumentos de la línea de comandos."  
+
+Comando greep de manera recursiva, para identificar en que archivo se encuentra la linea que contenga información sobre el "Emulator detected". 
+
+![image](/genes/dvba/grep1.png)
+
+
+
 *(1,1)*
 
 <!-- Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help]. -->
