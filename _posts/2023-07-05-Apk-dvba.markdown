@@ -5,7 +5,8 @@ categories: [Walkthrough]
 tags: [Android,APK,mobile]
 ---
 
-Antes que nada, quisiera dedicarle este walkthrough a una de las personas mas importantes en mi carrera profesional, siempre quise trabajar a su lado y fue la mejor 'Jefesita' ¡Gracias totales!. 
+Antes que nada, quisiera dedicarle este walkthrough a una de las personas mas importantes en mi carrera profesional, siempre quise trabajar a su lado y fue un honor.
+¡Gracias totales!. 
 
 1. Reverse the android application.
 
@@ -28,6 +29,8 @@ En la linea que contenga la información de `hardwareAccelerated="true"`.
 ![image](/genes/dvba/hardwareAccelerated.png)
 
 Se supone que para lograr este primer bypass, basta con cambiar el valor de True a False, volver a empaquetar la aplicación e intenter ejecutarla. 
+
+
 
 *(1,1)*
 
