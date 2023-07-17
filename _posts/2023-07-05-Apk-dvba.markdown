@@ -40,7 +40,7 @@ Se busca la siguiente linea ya que es el mensaje de erro obtenido por la aplicac
 
 Según mis opciones abro el archivo MainActivity.smali, pero debería ser .jar, al parecer es por la no implementación de la herramienta `apkx` herramienta, que se descarga, pero no ejecuta...... MALDITHA ZEA. 
 
-Al parecer los soucione editando el archivo aptx alojado en la ruta /usr/local/bin, utiliza pyhton y no tenia python, pero si python3, solo era ajustar la ubicación. Primero con which python, despúes remplazar y funciona. 
+Al parecer lo solucione editando el archivo apkx alojado en la ruta /usr/local/bin, utiliza pyhton y no tenia python, pero si python3, solo era ajustar la ubicación. Primero con which python, despúes remplazar y funciona. 
 
 ![image](/genes/dvba/apkx.png)
 
@@ -49,6 +49,29 @@ Se utiliza la herramienta de apkx que sirve para: "Extrae el código fuente de J
 Comando greep de manera recursiva, para identificar en que archivo se encuentra la linea que contenga información sobre el "Emulator detected". 
 
 ![image](/genes/dvba/grep1.png)
+
+Una vez ubicado el archivo, se evalua el contenido de las línes de codigo y se identifica que es necesario modificar el proceso de la aplicación de forma que no entre en el bloque de códgio específico de la línea 258. 
+
+``` JavaScript
+// @File: scripts/script.js
+setTimeout(function() {
+    Java.perform(function() {
+
+        // We are loading the class here
+        var Rfunc = Java.use("a.a.a.a.a");
+
+        // Whenever a.a.a.a.a.R() is called, the below code is executed
+        Rfunc.R.implementation = function() {
+            // Capture the return value of R function
+            let retval = this.R();
+            // Printing the value we got from this function
+            console.log("Original return value = ", retval);
+            // Toggle the return value to make sure it doesn't enter the if loop
+            return !retval
+        }
+    })
+}, 10);
+```
 
 
 
