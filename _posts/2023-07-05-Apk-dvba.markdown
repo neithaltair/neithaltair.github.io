@@ -50,9 +50,9 @@ Comando greep de manera recursiva, para identificar en que archivo se encuentra 
 
 ![image](/genes/dvba/grep1.png)
 
-Una vez ubicado el archivo, se evalua el contenido de las línes de código y se identifíca que es necesario modificar el proceso de la aplicación de forma que no entre en el bloque de códgio específico de la línea 258. 
+Una vez ubicado el archivo, se evalua el contenido de las línes de código y se identifíca que es necesario modificar el proceso de la aplicación de forma que no entre en el bloque de código específico de la línea 258. 
 
-``` JS
+``` js
 // @File: scripts/script.js
 setTimeout(function() {
     Java.perform(function() {
@@ -72,6 +72,27 @@ setTimeout(function() {
     })
 }, 10);
 ```
+Dentro de la ruta donde se encuentra almacenada la aplicación, creamos un directorio para el script a utilizar `mkdir scripts` `cd scripts/` `nano script.js
+
+Se inserta el código de la parte superior y se procede a ejecutar frida con este script para lograr el bypaas de root y emulador. 
+
+![image](/genes/dvba/scriptFridaUno.png)
+
+Se ejecuta de manera correcta el script, pero se evidencia que aún tiene un bloque de código o "check" que no permite la ejecución de la aplicación. 
+
+En este punto se vuelve a ejecutar un grep para identificar si hay bloques de código que esten relacionados a frida. `grep -r -i frida`. 
+
+Al ejecutar el comando se identifica que la aplicación efectivamente cuenta con método enfocado en validar la ejecución de frida en el dispositivo. 
+
+Este método se encarga de validar los puertos en servicio del dispositivo y valida si el puerto por defecto de Frida esta en ejecución "27042". 
+
+De manera que para poder "bypasiarlo" es necesario cambiar el puerto en el que se ejecutara frida desde el dispositivo y posteriormente apuntar el script.js a ese puerto específico para ver si es posible. 
+
+
+![image](/genes/dvba/fridaBypass.png)
+
+Efectivamente, se logra el bypass ejecutando el script en un puerto diferente, en este caso `1337`. Incluso se alcanza a ver un mensaje de la aplicación que dice "Frida is not running (a frida no le gusta correr)". 
+
 
 
 
