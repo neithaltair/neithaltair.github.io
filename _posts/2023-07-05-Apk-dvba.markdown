@@ -50,9 +50,9 @@ Comando greep de manera recursiva, para identificar en que archivo se encuentra 
 
 ![image](/genes/dvba/grep1.png)
 
-Una vez ubicado el archivo, se evalua el contenido de las línes de codigo y se identifica que es necesario modificar el proceso de la aplicación de forma que no entre en el bloque de códgio específico de la línea 258. 
+Una vez ubicado el archivo, se evalua el contenido de las línes de código y se identifíca que es necesario modificar el proceso de la aplicación de forma que no entre en el bloque de códgio específico de la línea 258. 
 
-``` JavaScript
+``` JS
 // @File: scripts/script.js
 setTimeout(function() {
     Java.perform(function() {
