@@ -5,7 +5,8 @@ categories: [Walkthrough]
 tags: [Android,APK,mobile]
 ---
 
-Antes que nada, quisiera dedicarle este walkthrough a una de las personas mas importantes en mi carrera profesional, siempre quise trabajar a su lado y fue la mejor 'Jefesita' ¡Gracias totales!. 
+Antes que nada, quisiera dedicarle este walkthrough a una de las personas mas importantes en mi carrera profesional, siempre quise trabajar a su lado y fue un honor.
+¡Gracias totales!. 
 
 1. Reverse the android application.
 
@@ -39,7 +40,7 @@ Se busca la siguiente linea ya que es el mensaje de erro obtenido por la aplicac
 
 Según mis opciones abro el archivo MainActivity.smali, pero debería ser .jar, al parecer es por la no implementación de la herramienta `apkx` herramienta, que se descarga, pero no ejecuta...... MALDITHA ZEA. 
 
-Al parecer los solucione editando el archivo aptx alojado en la ruta /usr/local/bin, utiliza pyhton y no tenia python, pero si python3, solo era ajustar la ubicación. Primero con which python, despúes remplazar y funciona. 
+Al parecer los soucione editando el archivo aptx alojado en la ruta /usr/local/bin, utiliza pyhton y no tenia python, pero si python3, solo era ajustar la ubicación. Primero con which python, despúes remplazar y funciona. 
 
 ![image](/genes/dvba/apkx.png)
 
@@ -48,6 +49,50 @@ Se utiliza la herramienta de apkx que sirve para: "Extrae el código fuente de J
 Comando greep de manera recursiva, para identificar en que archivo se encuentra la linea que contenga información sobre el "Emulator detected". 
 
 ![image](/genes/dvba/grep1.png)
+
+Una vez ubicado el archivo, se evalua el contenido de las línes de código y se identifíca que es necesario modificar el proceso de la aplicación de forma que no entre en el bloque de código específico de la línea 258. 
+
+``` js
+// @File: scripts/script.js
+setTimeout(function() {
+    Java.perform(function() {
+
+        // We are loading the class here
+        var Rfunc = Java.use("a.a.a.a.a");
+
+        // Whenever a.a.a.a.a.R() is called, the below code is executed
+        Rfunc.R.implementation = function() {
+            // Capture the return value of R function
+            let retval = this.R();
+            // Printing the value we got from this function
+            console.log("Original return value = ", retval);
+            // Toggle the return value to make sure it doesn't enter the if loop
+            return !retval
+        }
+    })
+}, 10);
+```
+Dentro de la ruta donde se encuentra almacenada la aplicación, creamos un directorio para el script a utilizar `mkdir scripts` `cd scripts/` `nano script.js
+
+Se inserta el código de la parte superior y se procede a ejecutar frida con este script para lograr el bypaas de root y emulador. 
+
+![image](/genes/dvba/scriptFridaUno.png)
+
+Se ejecuta de manera correcta el script, pero se evidencia que aún tiene un bloque de código o "check" que no permite la ejecución de la aplicación. 
+
+En este punto se vuelve a ejecutar un grep para identificar si hay bloques de código que esten relacionados a frida. `grep -r -i frida`. 
+
+Al ejecutar el comando se identifica que la aplicación efectivamente cuenta con método enfocado en validar la ejecución de frida en el dispositivo. 
+
+Este método se encarga de validar los puertos en servicio del dispositivo y valida si el puerto por defecto de Frida esta en ejecución "27042". 
+
+De manera que para poder "bypasiarlo" es necesario cambiar el puerto en el que se ejecutara frida desde el dispositivo y posteriormente apuntar el script.js a ese puerto específico para ver si es posible. 
+
+
+![image](/genes/dvba/fridaBypass.png)
+
+Efectivamente, se logra el bypass ejecutando el script en un puerto diferente, en este caso `1337`. Incluso se alcanza a ver un mensaje de la aplicación que dice "Frida is not running (a frida no le gusta correr)". 
+
 
 Para los siguientes pasos se necesita frida, para lograr una ejecucion de frida en el equipo es necesario, pasar el archivo de la manera correcta al dispositivo y posteriormente darle permisos de ejecución sobre el archivo, tal cual como se haria el linux un buen "chmod +x frida...." puede solucionar el problema. 
 
