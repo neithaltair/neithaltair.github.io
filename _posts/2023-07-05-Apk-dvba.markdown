@@ -39,7 +39,7 @@ Se busca la siguiente linea ya que es el mensaje de erro obtenido por la aplicac
 
 Según mis opciones abro el archivo MainActivity.smali, pero debería ser .jar, al parecer es por la no implementación de la herramienta `apkx` herramienta, que se descarga, pero no ejecuta...... MALDITHA ZEA. 
 
-Al parecer los soucione editando el archivo aptx alojado en la ruta /usr/local/bin, utiliza pyhton y no tenia python, pero si python3, solo era ajustar la ubicación. Primero con which python, despúes remplazar y funciona. 
+Al parecer los solucione editando el archivo aptx alojado en la ruta /usr/local/bin, utiliza pyhton y no tenia python, pero si python3, solo era ajustar la ubicación. Primero con which python, despúes remplazar y funciona. 
 
 ![image](/genes/dvba/apkx.png)
 
@@ -49,7 +49,14 @@ Comando greep de manera recursiva, para identificar en que archivo se encuentra 
 
 ![image](/genes/dvba/grep1.png)
 
+Para los siguientes pasos se necesita frida, para lograr una ejecucion de frida en el equipo es necesario, pasar el archivo de la manera correcta al dispositivo y posteriormente darle permisos de ejecución sobre el archivo, tal cual como se haria el linux un buen "chmod +x frida...." puede solucionar el problema. 
 
+``` bash
+#Tener en cuenta que se debe actualizar la version del frida, puede que haya una mas reciente a la 16.1.1
+wget https://github.com/frida/frida/releases/download/16.1.1/frida-server-16.1.1-android-x86.xz
+xz --decompress frida-server-16.1.1-android-x86.xz
+adb push frida-server-16.1.1-android-x86 /tmp
+``` 
 
 *(1,1)*
 
