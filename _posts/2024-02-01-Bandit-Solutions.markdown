@@ -28,7 +28,8 @@ $ sshpass -p "PASSWORD" ssh bandit0@bandit.labs.overthewire.org -p 2220
 $ ls
 $ cat readme
 NHSXQwcBdpmTEzi3bvBHMM9H6
-
+```
+``` bash
 #Sol 2 lv
 $ cat /home/bandit/-
 rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
@@ -36,7 +37,8 @@ $ cat ./-
 rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
 $ cat $(pwd)/-
 rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
-
+``` 
+``` bash
 #Sol 3 Lv
 $ cat "spaces in this file"
 aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
@@ -48,7 +50,8 @@ $ cat s*
 aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
 $ cat /home/bandit2/* 
 aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
-
+``` 
+``` bash
 #Sol 3-4 
 $ ls
 $ cd inhere/
@@ -59,7 +62,8 @@ $ cat /home/bandit3/inhere/.hidden
 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
 $ cat /home/bandit3/inhere/.*
 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
-
+``` 
+``` bash
 #Sol 4-5
 # human Redeable
 $ find . -type f | grep "\-file" | xargs file
@@ -75,14 +79,16 @@ $ find . -type f | grep "\-file" | xargs file
 ./-file09: data
 $ cat /home/bandit4/inhere/-file07
 lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
-
+``` 
+``` bash
 #Sol 5-6
 # encontrar archivo, no ejecutable de 1033 bytes ||| man find tamanio archivo 
 $ find . -type f ! -executable -size 1033c | xargs file
 P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
 $ find . -type f ! -executable -size 1033c | xargs file | xargs
 P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
-
+``` 
+``` bash
 #Sol 6-7
 #the password for the next level is stored somewhere on the server and has all of the following properties:
     #owned by user bandit7
@@ -94,7 +100,8 @@ $ find . -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
 ./var/lib/dpkg/info/bandit7.password
 $ find . -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null | xargs cat
 z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
-
+``` 
+``` bash
 # Sol 7-8
 # The password for the next level is stored in the file data.txt next to the word millionth
 $ sshpass -p "z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S" ssh bandit7@bandit.labs.overthewire.org -p 2220
@@ -105,14 +112,95 @@ $ cat data.txt | grep "millionth" | awk 'NF{print $NF}' # Imprimir el argumento 
 TESKZC0XvTetK0S9xNwm25STk5iWrBvP
 $ cat data.txt | grep "millionth"  | awk '{print $2}' # Imprimir segundo argumento. 
 TESKZC0XvTetK0S9xNwm25STk5iWrBvP
-
-
+``` 
+``` bash
 # Sol 8-9
 # The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
 $ sshpass -p "TESKZC0XvTetK0S9xNwm25STk5iWrBvP" ssh bandit8@bandit.labs.overthewire.org -p 2220
+#sort para ordenar de manera alfabetica el contenido del archivo y uniq -u para identificar la línea que se repite una sola vez. 
+$ sort data.txt | uniq -u 
+EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+``` 
+``` bash
+# sol 9-10  
+# The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
+$ sshpass -p "EN632PlfYiZbn3PhVK3XOGSlNInNE00t" ssh bandit9@bandit.labs.overthewire.org -p 2220
+# strings permite ver los caracteres legibles para humanos dentro de cualquier archivo. Se complementa con grep para identificar la flag. 
+$ strings data.txt | grep "="
+========== G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+>8=6
+# Tail es para listar los últimos elementos, comando contrario sería Head. 
+$ strings data.txt | grep "=====" | tail -n1 | awk 'NF{print $NF}' 
+G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+``` 
 
+``` bash
+# sol 10-11
+#  The password for the next level is stored in the file data.txt, which contains base64 encoded data
+$ sshpass -p "G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s" ssh bandit10@bandit.labs.overthewire.org -p 2220
+# base64 no es un algoritmo de cifrado, se decodifica fácilmente, debido a esto no debe ultizarse como un métodod de cifrado seguro.
+$ cat data.txt
+$ base64 -d data.txt
+6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
 
+``` 
+``` bash
+#sol 11-12
+#The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+$ sshpass -p "6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM" ssh bandit11@bandit.labs.overthewire.org -p 2220
+#Forma sencilla de root 13, página web para rotar 13 posiciones el escrito.
+#Forma desde bash para rotar
+$ abcdefghijklm nopqrstuvwxyz
+$ cat data.txt | tr '[A-Za-z]''[N-ZA-Mn-za-m]' | awk '{print $NF}'
+$ JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+``` 
 
-```
+``` bash
+#sol 12-13
+#The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+$ sshpass -p "JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv" ssh bandit12@bandit.labs.overthewire.org -p 2220
+# comandos para creacion de carpetas temporales
+$ mkdir /tmp/neithaltair
+$ cp data.txt /tmp/neithaltair
+# Que es el sistema hexadecimal, sistema de enumeración posicional que tiene como base el 16. 
+
+# sponge sobreescribe el archivo ya creado con la información nueva
+$ cat data.txt | xxd -r | sponge data.txt
+$ cat data.txt | xxd -r > xxd.txt
+# Muestra el archivo en hexadecimal
+$ cat /etc/hosts | xxd 
+
+# Muestra el archivo con todos los hexadecimales juntos
+$ cat /etc/hosts | xxd -ps
+
+#Compactar en una única línea con xargs
+$ cat /etc/hosts | xxd -ps | xargs
+
+#Compactar y quitar los espacios con tr
+$ cat /etc/hosts | xxd -ps | xargs | tr -d ' '
+
+# Con -r se hace el proceso inverso de lo que se ha puesto en hexadecimal
+$ cat /etc/hosts | xxd -ps | xargs | tr -d ' ' >> etchosts
+$ cat etchosts | xxd -ps -r
+
+#Se ejecuta file para tener una idea del archivo
+$ file xxd
+#Se identifican los magic numbers del archivo (list of signatures) para identificar la extensión del archivo.
+$ ghex xxd 
+#Se establece la extensión del archivo de acuerdo con los magic numbers
+$ mv xxd xxd.gz
+#Se descomrpime el archivo
+$ 7z x xxd.gz
+# el archivo descomprimido es data2.bin
+# Se realiza el mismo proceso de identificación del archivo con los magic numbers 42 5A 68, extensión de archivo .bz2
+# Se descomprimen los archivos hasta el data9.bin
+$ cat data9.bin
+The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+``` 
+
+``` bash
+$ sshpass -p "wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw" ssh bandit12@bandit.labs.overthewire.org -p 2220
+``` 
+
 
 bandit0 = NHSXQwcBdpmTEzi3bvBHMM9H66vVXjL
