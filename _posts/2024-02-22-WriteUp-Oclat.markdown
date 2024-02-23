@@ -25,7 +25,10 @@ Identificamos la máquina vulnerable y nos enfocamos en ella, escaneo agresivo c
 ![image](/genes/oclat/ftpNmap.png)
 
 Identificamos que el servicio FTP en el puerto 21 es vulnerable a login anonymous.
-
+``` bash
+# Opción adicional script para identificar el ftp anonymous
+$ nmap -Pn -n -p21 -sV --script ftp-anon {IP}
+``` 
 ![image](/genes/oclat/ftpLogin.png)
 
 Nos logeamos, revisamos que archivos hay en la ruta, los descargamos y los leemos ;) 
@@ -34,13 +37,12 @@ Nos logeamos, revisamos que archivos hay en la ruta, los descargamos y los leemo
 
 Identificámos el usuario root y el usuario USER, los cargamos y solucionado. 
 
-
 ![image](/genes/oclat/cargado.png)
 
 `Conclusiones:`
-1: Según la situación podemos o no podemos hacer ruido al realizar los escaneos, lo ideal es tratar de siempre hacer la menor cantidad de ruido posible. 
-2: El servicio ftp se puede encontrar en impresoras un vector de ataque interesante sería la carga de archivos maliciosos.
-3: La flag estaba bien, me tomo como 6 intentos darme cuenta de que el error era un 0 en lugar de una O. 
+**1**: Según la situación podemos o no podemos hacer ruido al realizar los escaneos, lo ideal es tratar de siempre hacer la menor cantidad de ruido posible. 
+**2**: El servicio ftp se puede encontrar en impresoras un vector de ataque interesante sería la carga de archivos maliciosos.
+**3**: La flag estaba bien, me tomo como 6 intentos darme cuenta de que el error era un 0 en lugar de una O. 
 
 *(1,1)*
 
