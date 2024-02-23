@@ -4,16 +4,6 @@ date:   2024-02-01
 categories: [Bandit]
 tags: [Bandit1, SSH, Wargames]
 ---
-Insertar Video
-[Crear carpeta compartida VirtualBox](https://youtu.be/ZQZFmZz-v7s)
-
-#Resaltar
-Escaneo Red con `NMAP`. 
-
-#Insertar imagenes
-![image](/genes/malware/additions.png)
-
-
 `SSH =` protocolo y programa que lo implementa cuya función principal es el acceso remoto a un servidor por medio de un canal seguro.  
 
 ``` bash
@@ -199,7 +189,9 @@ The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
 ``` 
 
 ``` bash
-$ sshpass -p "wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw" ssh bandit12@bandit.labs.overthewire.org -p 2220
+#Sol 13-14
+
+$ sshpass -p "wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw" ssh bandit13@bandit.labs.overthewire.org -p 2220
 ``` 
 
 

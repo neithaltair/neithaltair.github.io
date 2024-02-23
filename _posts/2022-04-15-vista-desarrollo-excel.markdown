@@ -34,4 +34,13 @@ print_hi('Tom')
 ``` -->
 
 <!-- IMAGEN -->
+
+Insertar Video
+[Crear carpeta compartida VirtualBox](https://youtu.be/ZQZFmZz-v7s)
+
+#Resaltar
+Escaneo Red con `NMAP`. 
+
+#Insertar imagenes
+![image](/genes/malware/additions.png)
 *(1,1)*
