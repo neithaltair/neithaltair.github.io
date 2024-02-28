@@ -190,8 +190,40 @@ The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
 
 ``` bash
 #Sol 13-14
-
+#The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on.
 $ sshpass -p "wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw" ssh bandit13@bandit.labs.overthewire.org -p 2220
+
+# La llave privada SSH es un archivo que se utiliza para autenticar la identidad del usuario al conectarse a un servidor remoto.
+
+#se ejecuta el comando pero no permitia la conexión con bandit14, el error era que no se estaba asignando el puerto del ssh, por defecto es 22, pero en este caso tenemos configurado el 2220.
+$ ssh -i sshkey.private bandit14@localhost -p 2220
+$ cat /etc/bandit_pass/bandit14
+``` 
+
+``` bash
+#Sol 14-15
+#The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+$ sshpass -p "fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq" ssh bandit14@bandit.labs.overthewire.org -p 2220
+
+$ nc localhost 30000 
+$ fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+
+Correct! 
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+
+``` 
+`Identificar los puertos expuestos en linux = ss -nltp`
+
+``` bash
+#Sol 15-16
+# The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.
+
+#Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS” section in the manpage. Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command…
+$ sshpass -p "jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt" ssh bandit15@bandit.labs.overthewire.org -p 2220
+
+
+
 ``` 
 
 
