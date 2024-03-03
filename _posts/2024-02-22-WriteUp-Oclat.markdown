@@ -1,10 +1,10 @@
 ---
-title:  "Solución Maquina Oclat"
+title:  "Solución Máquina Oclat"
 date:   2024-02-22
 categories: [CTF]
 tags: [Oclat,CTF,RedTeam]
 ---
-Se procede a realizar la solución de la máquina OCLAT, nivel fácil, somos principiantes. 
+Se procede a realizar la solución de la máquina OCLAT, nivel fácil. 
 `OCLAT`.
 
 Empezamos tranqui, enumeración de los hosts en la red: 

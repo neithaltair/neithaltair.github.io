@@ -221,9 +221,6 @@ jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
 
 #Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS” section in the manpage. Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command…
 $ sshpass -p "jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt" ssh bandit15@bandit.labs.overthewire.org -p 2220
-
-
-
 ``` 
 
 
