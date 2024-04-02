@@ -1,0 +1,14 @@
+---
+title:  "Herramientas"
+date:   2024-03-18
+categories: [Herramientas]
+tags: [tools]
+---
+Listado posibles herramientas
+`CIDR = Classless Inter-Domain Routing, permite saber la máscara de red, la primera ip, la cantidad de hosts total que puede tener la red, la información de la ip en decimal, entre otras. https://www.ipaddressguide.com/cidr`.
+
+
+
+``.
+
+<!-- Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help]. -->

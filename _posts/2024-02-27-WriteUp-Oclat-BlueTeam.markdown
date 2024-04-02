@@ -9,13 +9,22 @@ Se procede a realizar la solución de la máquina OCLAT, nivel fácil.
 
 Mitigación de la vulnerabilidad. 
 
+Primero intento lograr conectarme en la máquina a través de ssh, pero no funcionan los datos encontrados en el ftp. 
+
+Procedo a enumerar los servicios con las versiones, posteriormente con `searchsploit` identifíco posibles exploits. 
+
 ``` bash
-# Opción 1
-$ netdiscover
-# Opción 2 Netdiscovet con un rango de ip
-$ netdiscover -r 192.168.1.0/24
-# Opción 3 NMAP
-$ sudo nmap -sS 192.168.1.0/24
+# 
+$ sudo apt install exploitdb
+
+$ searchsploit vsftpd 3.0.3
+$ searchsploit openssh 7.2p2
+ linux/remote/40136.py
+# No recordaba cual era la ruta donde esta el script.
+# buscamos el archivo, ingresamos el posible path y 2>/dev/null para que no muestre los errores.  
+$ find / -name "40136.py" -path "*/linux/remote/*" 2>/dev/null
+# la ruta.
+/usr/share/exploitdb/exploits/linux/remote/40136.py
 ``` 
 
 ![image](/genes/oclat/netdiscover.png)
