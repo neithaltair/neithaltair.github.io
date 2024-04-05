@@ -8,7 +8,7 @@ Listado posibles herramientas
 
 `CIDR = Classless Inter-Domain Routing, permite saber la máscara de red, la primera ip, la cantidad de hosts total que puede tener la red, la información de la ip en decimal, entre otras. https://www.ipaddressguide.com/cidr`.
 
-`Código para escaner una red con bash`
+`1. Código para escaner una red con bash`
 
 El código se puede ajustar para los rangos de ip necesarios, ¿que tanto ruido hace comparado con nmap?... 
 Hay que probar. 
@@ -31,4 +31,18 @@ for i in $(seq 1 254); do
 done; wait
 ```
 
-`Script bash para escanear los puertos en los hosts`
+`2. Script bash para escanear los puertos en los hosts`
+
+```bash
+for port in $(seq 1 65535); do
+  (echo '' > /dev/tcp/127.0.0.1/$port) 2>/dev/null && echo "[+] $port - Open" &
+done; wait
+```
+
+** El código parece fallar en la máquina virtual por falta de recursos, de manera que voy a configurar el linux subsytem for windows, para probar el sh en el. ¿Funcionará?
+
+wsl --install
+
+El problema surge en que para poder ejecutar el sistema linux, se debe reiniciar el Windows... :D ¡Windows siendo Windows!. 
+
+Se le asignaron mas recursos a la máquina virtual, pero no funcionó, es necesario probar en el subsytem a ver si cambia algo, si no, tocaría probar en un linux nativo, hay que encontrar el error. 
