@@ -19,6 +19,7 @@ $ ls
 $ cat readme
 NHSXQwcBdpmTEzi3bvBHMM9H6
 ```
+
 ``` bash
 #Sol 2 lv
 $ cat /home/bandit/-
@@ -28,6 +29,7 @@ rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
 $ cat $(pwd)/-
 rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
 ``` 
+
 ``` bash
 #Sol 3 Lv
 $ cat "spaces in this file"
@@ -41,6 +43,7 @@ aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
 $ cat /home/bandit2/* 
 aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
 ``` 
+
 ``` bash
 #Sol 3-4 
 $ ls
@@ -53,6 +56,7 @@ $ cat /home/bandit3/inhere/.hidden
 $ cat /home/bandit3/inhere/.*
 2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
 ``` 
+
 ``` bash
 #Sol 4-5
 # human Redeable
@@ -70,6 +74,7 @@ $ find . -type f | grep "\-file" | xargs file
 $ cat /home/bandit4/inhere/-file07
 lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
 ``` 
+
 ``` bash
 #Sol 5-6
 # encontrar archivo, no ejecutable de 1033 bytes ||| man find tamanio archivo 
@@ -78,6 +83,7 @@ P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
 $ find . -type f ! -executable -size 1033c | xargs file | xargs
 P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
 ``` 
+
 ``` bash
 #Sol 6-7
 #the password for the next level is stored somewhere on the server and has all of the following properties:
@@ -91,6 +97,7 @@ $ find . -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
 $ find . -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null | xargs cat
 z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
 ``` 
+
 ``` bash
 # Sol 7-8
 # The password for the next level is stored in the file data.txt next to the word millionth
@@ -103,6 +110,7 @@ TESKZC0XvTetK0S9xNwm25STk5iWrBvP
 $ cat data.txt | grep "millionth"  | awk '{print $2}' # Imprimir segundo argumento. 
 TESKZC0XvTetK0S9xNwm25STk5iWrBvP
 ``` 
+
 ``` bash
 # Sol 8-9
 # The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
@@ -111,6 +119,7 @@ $ sshpass -p "TESKZC0XvTetK0S9xNwm25STk5iWrBvP" ssh bandit8@bandit.labs.overthew
 $ sort data.txt | uniq -u 
 EN632PlfYiZbn3PhVK3XOGSlNInNE00t
 ``` 
+
 ``` bash
 # sol 9-10  
 # The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.
@@ -132,8 +141,8 @@ $ sshpass -p "G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s" ssh bandit10@bandit.labs.overthe
 $ cat data.txt
 $ base64 -d data.txt
 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
-
 ``` 
+
 ``` bash
 #sol 11-12
 #The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
@@ -176,7 +185,7 @@ $ cat etchosts | xxd -ps -r
 #Se ejecuta file para tener una idea del archivo
 $ file xxd
 #Se identifican los magic numbers del archivo (list of signatures) para identificar la extensión del archivo.
-$ ghex xxd 
+$ ghex xxd  
 #Se establece la extensión del archivo de acuerdo con los magic numbers
 $ mv xxd xxd.gz
 #Se descomrpime el archivo
@@ -200,12 +209,18 @@ $ ssh -i sshkey.private bandit14@localhost -p 2220
 $ cat /etc/bandit_pass/bandit14
 ``` 
 
+`Netcat: nc`= netcat es una herramienta de red que permite a través de intérprete de comandos y con una sintaxis sencilla abrir puertos TCP/UDP en un host, asociar a una shell a un puerto en concreto y forzar acciones. 
+
+Cheat Sheet Netcat:
+https://gist.github.com/cmbaughman/c91f41ba7b2cf71106f1
+
 ``` bash
 #Sol 14-15
 #The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
 
 $ sshpass -p "fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq" ssh bandit14@bandit.labs.overthewire.org -p 2220
 
+#Se establece la conexión por netcat al propio servidor por el puerto 30000
 $ nc localhost 30000 
 $ fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
 
@@ -213,6 +228,7 @@ Correct!
 jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
 
 ``` 
+
 `Identificar los puertos expuestos en linux = ss -nltp`
 
 ``` bash
@@ -221,7 +237,46 @@ jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
 
 #Helpful note: Getting “HEARTBEATING” and “Read R BLOCK”? Use -ign_eof and read the “CONNECTED COMMANDS” section in the manpage. Next to ‘R’ and ‘Q’, the ‘B’ command also works in this version of that command…
 $ sshpass -p "jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt" ssh bandit15@bandit.labs.overthewire.org -p 2220
+
+export TERM=xterm
+
+$ `Identificar los puertos expuestos en linux = ss -nltp`
+$ ss -nltp
+
+# Hacer uso de which para identificar la ruta absoluta de un comando que queremos identificar.
+$ which nc
+/bin/nc
+
+$ which ncat
+/usr/bin/ncat
+
+$ ncat --help
+$ ncat --help | grep "ssl"
+$ cat --ssl 127.0.0.1 30001
+
+--ssl   Connect or listen with SSL
+--ssl-cert  Specify SSL certificate file (PEM) for listening
+--ssl-key   Specify SSL private key (PEM) for listening
+--ssl-verify    Verify trust and domain name of certificates
+--ssl-trustfile PEM file containing trusted SSL certificates
+--ssl-ciphers   Cipherlist containing SSL ciphers to use
+--ssl-alpn  ALPN protocol list to use.
+
+$ ncat --ssl 127.0.0.1 3001 
+$ jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+
+Correct!
+JQttfApK4SeyHwDlI9SXGR50qclOAil1
+
 ``` 
 
+```bash
+# solution 16-17 
+# The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.
 
-bandit0 = NHSXQwcBdpmTEzi3bvBHMM9H66vVXjL
+sshpass -p "JQttfApK4SeyHwDlI9SXGR50qclOAil1" ssh bandit16@bandit.labs.overthewire.org -p 2220
+
+export TERM=xterm
+
+
+```

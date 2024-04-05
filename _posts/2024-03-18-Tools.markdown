@@ -5,10 +5,30 @@ categories: [Herramientas]
 tags: [tools]
 ---
 Listado posibles herramientas
+
 `CIDR = Classless Inter-Domain Routing, permite saber la máscara de red, la primera ip, la cantidad de hosts total que puede tener la red, la información de la ip en decimal, entre otras. https://www.ipaddressguide.com/cidr`.
 
+`Código para escaner una red con bash`
 
+El código se puede ajustar para los rangos de ip necesarios, ¿que tanto ruido hace comparado con nmap?... 
+Hay que probar. 
 
-``.
+```bash
+#!/bin/bash
+#tput cnorm #mostrar de nuevo el cursor
+#tput civis #Ocultar el cursor
+for i in $(seq 1 254); do
+    timeout 1 bash -c "ping -c 1 192.168.1.$i &>/dev/null" && echo "[+] Host 192.168.1.$i - Active"&
+done; wait
+```
 
-<!-- Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help]. -->
+#Opción dos, solo lista las ips activas identificadas, ¿Para que tanto texto?, mejor que solo sea copiar y pegar.
+
+```bash
+tput civis #Ocultar el cursor
+for i in $(seq 1 254); do
+    timeout 1 bash -c "ping -c 1 192.168.1.$i &>/dev/null" && echo "192.168.1.$i"&
+done; wait
+```
+
+`Script bash para escanear los puertos en los hosts`
