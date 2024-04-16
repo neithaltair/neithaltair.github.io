@@ -8,7 +8,7 @@ Listado posibles herramientas
 
 `CIDR = Classless Inter-Domain Routing, permite saber la máscara de red, la primera ip, la cantidad de hosts total que puede tener la red, la información de la ip en decimal, entre otras. https://www.ipaddressguide.com/cidr`.
 
-`1. Código para escaner una red con bash`
+**1. Código para escaner una red con bash**
 
 El código se puede ajustar para los rangos de ip necesarios, ¿que tanto ruido hace comparado con nmap?... 
 Hay que probar. 
@@ -25,15 +25,17 @@ done; wait
 #Opción dos, solo lista las ips activas identificadas, ¿Para que tanto texto?, mejor que solo sea copiar y pegar.
 
 ```bash
+#!/bin/bash
 tput civis #Ocultar el cursor
 for i in $(seq 1 254); do
     timeout 1 bash -c "ping -c 1 192.168.1.$i &>/dev/null" && echo "192.168.1.$i"&
 done; wait
 ```
 
-`2. Script bash para escanear los puertos en los hosts`
+**2. Script bash para escanear los puertos en los hosts**
 
 ```bash
+#!/bin/bash
 for port in $(seq 1 65535); do
   (echo '' > /dev/tcp/127.0.0.1/$port) 2>/dev/null && echo "[+] $port - Open" &
 done; wait
