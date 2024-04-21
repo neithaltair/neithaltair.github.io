@@ -330,17 +330,17 @@ vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
 -----END RSA PRIVATE KEY-----
 
 # Las claves privadas deben de contar con el privilegio 600
-chmod 600 id_rsa
+$ chmod 600 id_rsa
 
 #Para localizar la clave id-rsa
-cd ~/.ssh
+$ cd ~/.ssh
 
 #Una vez en el directorio .ssh, puedes listar los archivos utilizando el comando ls:
 ls
 
 #Si la clave id_rsa existe, aparecerá en la lista.
 
-ssh -i id_rsa bandit17@bandit.labs.overthewire.org -p 2220
+$ ssh -i id_rsa bandit17@bandit.labs.overthewire.org -p 2220
 
 #Me logeo en el servidor usando la clave del id_rsa, pero en la ruta: "/etc/bandit_pass/bandit17", es posible ver la clave del nivel. 
 VwOSWtCA7lRKkTfbr2IDh6awj9RNZM5e
@@ -354,11 +354,11 @@ VwOSWtCA7lRKkTfbr2IDh6awj9RNZM5e
 #NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19
 
 #Hacemos uso del diff para identificar las líneas que cambian entre los dos archivos. 
-diff passwords.old passwords.new
+$ diff passwords.old passwords.new
 
 hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
 
-ssh -p "hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg" ssh bandit18@bandit.labs.overthewire.org -p 2220
+$ ssh -p "hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg" ssh bandit18@bandit.labs.overthewire.org -p 2220
 ```
 Ejemplos de uso del comando diff.
 https://eltallerdelbit.com/comando-diff-ejemplos/
@@ -382,6 +382,61 @@ sshpass -p "awhqfNnAbc1naukrpqDYcF95h7HoMTrC" ssh bandit19@bandit.labs.overthewi
 
 #SUID significa “establecer ID de usuario” (Set owner User ID) y SGID significa “establecer ID de grupo” (Set Group ID up on execution).
 
+export TERM=xterm
+# Para ejecutar el archivo como si fuera bandit20 se hace uso del bash -p
+$ ./bandit20-do bash -p
+
+$ whoami
+#Otra opción sería el ./bandit20-do sh, pero no funciono, al hacer el whoami seguía apareciendo como bandit19
+
+$ cat /etc/bandit_pass/bandit20
+VxCazJaVykI6W36BkBU0mJTCM8rR95XT
+```
+
+```bash
+#There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+sshpass -p "VxCazJaVykI6W36BkBU0mJTCM8rR95XT" ssh bandit20@bandit.labs.overthewire.org -p 2220
+
+export TERM=xterm
+
+# Crear comunicación a traves de netcat, para abrir un puerto a la escucha. 
+
+#Se abren dos ventanas de terminal cada una conectada al nivel bandit20
+
+#Ventana 1
+# netcat -n =  Indica que se debe desactivar la resolución de DNS para evitar la resolución inversa de direcciones IP / es para no obtener el dominio de la ip.
+# l = listen = Indica que netcat debe estar en modo de escucha, es decir, esperará una conexión entrante en lugar de intentar establecer una conexión saliente.
+# v = verbose =  Habilita el modo "verbose" (detallado), lo que significa que netcat imprimirá información detallada sobre las conexiones.
+# p = puerto= Especifica el puerto en el que netcat debe escuchar conexiones entrantes. En este caso, está configurado para escuchar en el puerto 4646
+$ nc -nlvp 4646
+$ VxCazJaVykI6W36BkBU0mJTCM8rR95XT
+
+#Ventana 2
+$ ./suconnect 4646
+```
+[image](/genes/bandit/bandit20.png)
+
+```bash
+#A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed. 
+sshpass -p "NvEJF7oVjkddltPSrdKEFOllh9V1IBcq" ssh bandit21@bandit.labs.overthewire.org -p 2220
+
+#Cron es un administrador de tareas de Linux que permite ejecutar comandos en un momento determinado, por ejemplo, cada minuto, día, semana o mes. Si queremos trabajar con cron, podemos hacerlo a través del comando crontab.
+
+#El formato de configuración de cron es el siguiente: Minuto Hora Dia-del-Mes Mes Dia-de-la-Semana Comando-a-Ejecutar
+
+#El intervalo de tiempo se especifica mediante 5 campos que representan, de izquierda a derecha:
+
+#Minutos: de 0 a 59.
+#Horas: de 0 a 23.
+#Día del mes: de 1 a 31.
+#Mes: de 1 a 12.
+#Día de la semana: de 1 a 6 lunes a sábado (1=lunes, 2=martes, etc.) y 0 o 7 el domingo.
+#Si quisiéramos especificar todos los valores posibles de un parámetro (minutos, horas, etc.) podemos hacer uso del asterisco (*). Esto implica que si en lugar de un número utilizamos un asterisco, el comando indicado se ejecutará cada minuto, hora, día de mes, mes o día de la semana, como en el siguiente ejemplo:
+
+#* * * * * /home/user/script.sh
+
+export TERM=xterm
 
 
 ```
