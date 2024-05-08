@@ -625,6 +625,26 @@ YnQpBuifNMas1hcUFk70ZmqkhUU2EuaS
 ```bash
 sshpass -p "YnQpBuifNMas1hcUFk70ZmqkhUU2EuaS" ssh bandit27@bandit.labs.overthewire.org -p 2220
 
+#There is a git repository at ssh://bandit27-git@localhost/home/bandit27-git/repo via the port 2220. The password for the user bandit27-git is the same as for the user bandit27.
 
+#Clone the repository and find the password for the next level.
+
+# Se supone que se debe clonar el repositorio para poder encontrar la contraseña del siguiente nivel, pero es necesario utilizar el puerto 2220, y por defecto esta en el 22. 
+
+$ git clone ssh://bandit27-git@localhost/home/bandit27-git/repo 
+
+#Así funciona en el video, pero no en la práctica, de manera que vamos a probar con ssh://usuario@dominio.com:puerto/repositorio
+
+$ git clone ssh://bandit27-git@localhost:2220/home/bandit27-git/repo
+# Efectivamente era la solución.
+$ cd repo
+$ ls
+$ cat README
+The password to the next level is: AVanL161y9rsbcJIsFHuw35rjaOM19nR
+
+```
+
+```bash
+sshpass -p "AVanL161y9rsbcJIsFHuw35rjaOM19nR" ssh bandit28@bandit.labs.overthewire.org -p 2220
 
 ```
