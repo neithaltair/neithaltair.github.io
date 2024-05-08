@@ -647,4 +647,29 @@ The password to the next level is: AVanL161y9rsbcJIsFHuw35rjaOM19nR
 ```bash
 sshpass -p "AVanL161y9rsbcJIsFHuw35rjaOM19nR" ssh bandit28@bandit.labs.overthewire.org -p 2220
 
+$ temp=$(mktemp -d)
+$ cd $temp
+$ git clone ssh://bandit28-git@localhost:2220/home/bandit28-git/repo
+$ cd repo/
+
+$ cat README.md 
+# Bandit Notes
+Some notes for level29 of bandit.
+## credentials
+- username: bandit29
+- password: xxxxxxxxxx
+
+$ git log
+commit 14f754b3ba6531a2b89df6ccae6446e8969a41f3 (HEAD -> master, origin/master, origin/HEAD)
+Author: Morla Porla <morla@overthewire.org>
+Date:   Thu Oct 5 06:19:41 2023 +0000
+
+    fix info leak
+
+$ git show 14f754b3ba6531a2b89df6ccae6446e8969a41f3
+ - username: bandit29
+-- password: tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S
++- password: xxxxxxxxxx
+
+tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S
 ```
