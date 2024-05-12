@@ -659,6 +659,7 @@ Some notes for level29 of bandit.
 - username: bandit29
 - password: xxxxxxxxxx
 
+# Con git log se puede ver el historial de los commits realizados y con el git show se puede ver las líneas cambiadas durante el commit. 
 $ git log
 commit 14f754b3ba6531a2b89df6ccae6446e8969a41f3 (HEAD -> master, origin/master, origin/HEAD)
 Author: Morla Porla <morla@overthewire.org>
@@ -672,4 +673,74 @@ $ git show 14f754b3ba6531a2b89df6ccae6446e8969a41f3
 +- password: xxxxxxxxxx
 
 tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S
+```
+
+```bash
+sshpass -p "tQKvmcwNYcFS6vmPHIUSI3ShmsrQZK8S" ssh bandit29@bandit.labs.overthewire.org -p 2220
+
+#There is a git repository at ssh://bandit29-git@localhost/home/bandit29-git/repo via the port 2220. The password for the user bandit29-git is the same as for the user bandit29.
+
+export TERM=xterm
+
+#git branch, muy importante hacer uso del git branch, para poder cambiar de rama, tambien el uso de git checkout dev. 
+$ git clone ssh://bandit29-git@localhost:2220/home/bandit29-git/repo
+
+$ git log
+$ git show
+$ git branch -a
+  
+  master
+  remotes/origin/HEAD -> origin/master
+  remotes/origin/dev
+  remotes/origin/master
+  remotes/origin/sploits-dev
+
+$ git checkout dev
+$ cat README.md
+- username: bandit30
+- password: xbhV3HpNGlTIdnjUrdAlPzc2L6y9EOnS
+```
+
+```bash
+sshpass -p "xbhV3HpNGlTIdnjUrdAlPzc2L6y9EOnS" ssh bandit30@bandit.labs.overthewire.org -p 2220
+
+export TERM=xterm
+
+#There is a git repository at ssh://bandit30-git@localhost/home/bandit30-git/repo via the port 2220. The password for the user bandit30-git is the same as for the user bandit30.
+
+#En Git, una etiqueta o tag sirve básicamente como una rama firmada que no permuta, es decir, siempre se mantiene inalterable. Sencillamente es una cadena arbitraria que apunta a un Commit específico. Puede decirse que un tag es un nombre que puedes usar para marcar un punto específico en la historia de un repositorio.
+
+$ temp=$(mktemp -d)
+$ cd temp
+$ git clone ssh://bandit30-git@localhost:2220/home/bandit30-git/repo
+$ cd repo
+$ cat README.md
+$ git tag
+secret
+$ git show secret
+
+OoffzGDlzhAlerFJ2cAiz1D41JW1Mhmt
+```
+
+
+```bash
+sshpass -p "OoffzGDlzhAlerFJ2cAiz1D41JW1Mhmt" ssh bandit31@bandit.labs.overthewire.org -p 2220
+
+#There is a git repository at ssh://bandit31-git@localhost/home/bandit31-git/repo via the port 2220. The password for the user bandit31-git is the same as for the user bandit31.
+
+#Los commits son la base principal del trabajo de Git, ya que es el comando más usado para guardar cualquier cambio en esta herramienta. Si te preguntas qué es un commit, te puedes hacer una idea al entenderlo como una captura de pantalla del trabajo que haces cada segundo en Git, creando en consecuencia una versión del proyecto en el repositorio local.
+$ temp=$(mktemp -d)
+$ cd $temp
+$ git clone ssh://bandit31-git@localhost/home/bandit31-git/repo
+$ cd repo
+$ cat README.md
+$ nano key.txt
+    'May I come in?'
+#Agregar un archivo específico con git--- git -f archivo.txt
+$ git add -f key.txt
+$ git commit -m "agregar key.txt"
+$ git push origin master
+
+remote: Well done! Here is the password for the next level:
+remote: rmCBvG56y58BXzv98yZGdO7ATVL5dW8y
 ```
