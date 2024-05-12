@@ -744,3 +744,39 @@ $ git push origin master
 remote: Well done! Here is the password for the next level:
 remote: rmCBvG56y58BXzv98yZGdO7ATVL5dW8y
 ```
+
+```bash
+sshpass -p "rmCBvG56y58BXzv98yZGdO7ATVL5dW8y" ssh bandit32@bandit.labs.overthewire.org -p 2220
+
+#After all this git stuff its time for another escape. Good luck!
+
+#En Bash se pueden usar argumentos desde la línea de comandos, los cuales son enviados a los scripts como variables. Estos quedarían representados de la siguiente forma:
+
+#[$0]: Representa el nombre del script que se invocó desde la terminal.
+
+#[$1]: Es el primer argumento desde la línea de comandos.
+
+#[$2]: Es el segundo argumento desde la línea de comandos y así sucesivamente.
+
+#[$#]: Contiene el número de argumentos que son recibidos desde la línea de comandos.
+
+#[$*]: Contiene todos los argumentos que son recibidos desde la línea de comandos, guardados todos en la misma variable.
+
+# Se hace uso del argumento $0 para salir de la uppershell y entrar a un espacio de bash
+$ $0
+# Se ejecuta la bash.
+$ bash
+$ cd ..
+$ cd bandit33/
+$ cat README.md
+
+Congratulations on solving the last level of this game!
+
+At this moment, there are no more levels to play in this game. However, we are constantly working
+on new levels and will most likely expand this game with more levels soon.
+Keep an eye out for an announcement on our usual communication channels!
+In the meantime, you could play some of our other wargames.
+
+If you have an idea for an awesome new level, please let us know!
+
+```
