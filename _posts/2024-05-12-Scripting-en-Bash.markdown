@@ -1,14 +1,21 @@
 ---
-title:  "Overthewire Wargames <Bandit>"
-date:   2024-02-01
-categories: [Bandit]
-tags: [Bandit1, SSH, Wargames]
+title:  "Scripting en BASH"
+date:   2024-05-13
+categories: [Bash]
+tags: [Bash, Scripting, Linux]
 ---
-`SSH =` protocolo y programa que lo implementa cuya función principal es el acceso remoto a un servidor por medio de un canal seguro.  
+`Scripting en Bash`
 
-You’ll find this post in your `_posts` directory. 
+* Creación de una menú con GETOPTS que permita alternar entre una serie de funciones existentes.
+* Creación de funciones.
+* Uso y empleo de condiciones en BASH.
+* Control de flujo de programa frente a CTRL+C
 
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll’s dedicated Help repository][jekyll-help].
+`trap ctrl_c INT` = establece una acción específica que se ejecutará cuando se reciba la señal de interrupción (SINGINT), que normalmente se genera cuando el usuario presiona CTRL+C en la terminal. 
 
-[jekyll]:      http://jekyllrb.com
-[jekyll-gh]:   https://github.com/jekyll/jekyll
+Estructura de comando trap
+
+``` bash
+trap accion señal
+``` 
+#Se realiza la validación del funcionamiento de trap con el control c, se puede agregar los colores y continuar entendiendo las partes del código. 
