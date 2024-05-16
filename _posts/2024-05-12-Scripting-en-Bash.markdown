@@ -24,3 +24,22 @@ La señal INT en el comando, es el nombre de la señal de interrupción en el si
 
 La señal INT (INTERRUPT) es generada cuando el usuario presiona ctrl+c en la terminal. Concida para solicitar la terminación de un programa o para abortar una operación en curso de manera controlada. 
 
+
+`CURL`
+``` bash
+# Curl es la herramienta.
+# -X GET: especifica el método HTTP a utilizar en la solicitud. En este caso 'GET' indica que se quiere realizar una solicitud GET.
+$ curl -X GET https://htbmachines.github.io
+$ curl -X GET https://htbmachines.github.io/bundle.js
+``` 
+
+`Utilidad = js-beautify`
+
+```bash
+$ curl -s -X GET https://htbmachines.github.io/bundle.js > bundle.js
+# sponge se utiliza para "absorber" la salida estándar y luego escribirla en un archivo una vez que la entrada estándar ha terminado de leerse. Esto puede ser especialmente útil cuando se necesita modificar un archivo y luego guardar los cambios en el mismo archivo
+$ cat bundle.js | js_beautify | sponge bundle.js
+# El comando de arriba no me funcionó
+$ js_beutify bundle.js | sponge bundle.js
+
+```
