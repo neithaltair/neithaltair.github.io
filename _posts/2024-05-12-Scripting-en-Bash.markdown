@@ -11,7 +11,7 @@ tags: [Bash, Scripting, Linux]
 * Uso y empleo de condiciones en BASH.
 * Control de flujo de programa frente a CTRL+C
 
-`trap ctrl_c INT` = establece una acción específica que se ejecutará cuando se reciba la señal de interrupción (SINGINT), que normalmente se genera cuando el usuario presiona CTRL+C en la terminal. 
+`1. trap ctrl_c INT` = establece una acción específica que se ejecutará cuando se reciba la señal de interrupción (SINGINT), que normalmente se genera cuando el usuario presiona CTRL+C en la terminal. 
 
 Estructura de comando trap
 ``` bash
@@ -33,13 +33,16 @@ $ curl -X GET https://htbmachines.github.io
 $ curl -X GET https://htbmachines.github.io/bundle.js
 ``` 
 
-`Utilidad = js-beautify`
+`2. Utilidad = js-beautify`
 
 ```bash
 $ curl -s -X GET https://htbmachines.github.io/bundle.js > bundle.js
 # sponge se utiliza para "absorber" la salida estándar y luego escribirla en un archivo una vez que la entrada estándar ha terminado de leerse. Esto puede ser especialmente útil cuando se necesita modificar un archivo y luego guardar los cambios en el mismo archivo
 $ cat bundle.js | js_beautify | sponge bundle.js
 # El comando de arriba no me funcionó
-$ js_beutify bundle.js | sponge bundle.js
-
+$ js_beautify bundle.js | sponge bundle.js
+# Se hace uso del parámetro -i para que no tenga en cuenta el capitalCase a la hora de buscar la palabra. 
+$ cat bundle.js | grep -i "tenta"
 ```
+
+`3. Creación de parámetros para el Script`
