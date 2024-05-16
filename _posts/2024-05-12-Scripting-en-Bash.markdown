@@ -14,8 +14,13 @@ tags: [Bash, Scripting, Linux]
 `trap ctrl_c INT` = establece una acción específica que se ejecutará cuando se reciba la señal de interrupción (SINGINT), que normalmente se genera cuando el usuario presiona CTRL+C en la terminal. 
 
 Estructura de comando trap
-
 ``` bash
 trap accion señal
+trap ctrl_c INT
 ``` 
-#Se realiza la validación del funcionamiento de trap con el control c, se puede agregar los colores y continuar entendiendo las partes del código. 
+
+`¿Por qué la señal es INT?`
+La señal INT en el comando, es el nombre de la señal de interrupción en el sistema UNIX/LINUX. 
+
+La señal INT (INTERRUPT) es generada cuando el usuario presiona ctrl+c en la terminal. Concida para solicitar la terminación de un programa o para abortar una operación en curso de manera controlada. 
+
