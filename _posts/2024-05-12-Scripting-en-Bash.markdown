@@ -46,3 +46,24 @@ $ cat bundle.js | grep -i "tenta"
 ```
 
 `3. Creación de parámetros para el Script`
+
+While getopts
+
+`Getopts`: es una utilidad de bash para analizar opciones y argumentos pasados al script. 
+
+```bash
+#Indicadores
+#Se pueden declarar variables con declare y con let. Se hace uso del parametro -i para indicar que será un valor integer. 
+declare -i parameter_counter=0
+
+#"m:h = especifíca las opciones que el script aceptará. en este caso las opciones son -m y -h. La m tiene dos puntos depués (un solo punto indica un argumento opcional, dos puntos indican uno obligatorio)."
+while getopts "m:h" arg in; do
+    case $arg in
+        m) let parameter_counter+=1;;
+        h) helpPanel;;
+    esac
+done
+
+```
+
+#Pendiente repasar a detalle la implementación del $OPTARG. entender mejor la parte de arg in. 
