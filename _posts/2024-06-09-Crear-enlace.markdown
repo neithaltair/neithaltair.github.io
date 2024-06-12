@@ -1,8 +1,8 @@
 ---
-title:  "Crear enlace simbólico para Postman"
+title:  "APIs pentesting"
 date:   2024-06-09
-categories: [Bash]
-tags: [Bash, Scripting, Linux]
+categories: [APIs]
+tags: [Bash, Scripting, Pentesting]
 ---
 `Crear enlace`
 
@@ -42,5 +42,22 @@ sudo pip3 install arjun
 
 # In case burp
 sudo apt install zaproxy 
+
+# API LAB
+curl -o docker-compos.yml https://raw.githubusercontent.com/OWASP/crAPI/main/deploy/docker/docker-compose.yml
+sudo docker-compose pull
+sudo docker-compose -f docker-compose.yml --compatibility up -d
+
+#Saber que servicios esta corriendo el docker y que puerto
+sudo docker-compose ps
+
+
+#Tool
+sudo git clone https://github.com/roottusk/vapi.git
+cd vapi
+#Se inicia la imagen
+sudo docker-compose up -d
+
+
 ``` 
 
