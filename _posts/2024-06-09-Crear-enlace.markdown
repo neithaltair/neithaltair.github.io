@@ -39,7 +39,6 @@ sudo ln -s /opt/kiterunner/dist/kr /usr/bin/kr
 sudo git clone https://github.com/s0md3v/Arjun.git
 or
 sudo pip3 install arjun
-
 # In case burp
 sudo apt install zaproxy 
 ``` 
