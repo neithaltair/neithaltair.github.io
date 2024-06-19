@@ -14,7 +14,7 @@ Decompilación del apk.
 
 ``` bash
 #Decompilacion de la aplicacion con apktool.jar
-java -jar apktool_2.7.0.jar d -f -o aplicacion/smaliapk/
+java -jar apktool_2.7.0.jar d -f -o carpeta aplicacion.apk
 #decompilacion con apktool
 apktool d dvba.apk -o dvba.apktool
 ```
