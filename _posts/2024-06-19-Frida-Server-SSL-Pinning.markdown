@@ -123,8 +123,21 @@ Package: com.app.damnvulnerablebank
     Permission: null
   com.google.firebase.auth.internal.FederatedSignInActivity
     Permission: com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN
+```
 
+El valor 'android:exported' de un componente de actividad exportado está configurado en 'true' en el archivo AndroidManifest.xml.
 
+```xml
+<activity android:exported="true" android:name="com.app.damnvulnerablebank.SendMoney">
+<activity android:exported="true" android:name="com.app.damnvulnerablebank.ViewBalance"/>
+<activity android:exported="true" android:name="androidx.biometric.DeviceCredentialHandlerActivity" android:theme="@style/DeviceCredentialHandlerTheme"/>
+
+#Configuración de <activity> de manera correcta.
+<activity android:name="com.app.damnvulnerablebank.ResetPassword"/>
+<activity android:name="com.app.damnvulnerablebank.ViewBeneficiary"/>
+```
+
+```bash
 #Start Activity
 dz> run app.activity.start --component com.app.damnvulnerablebank com.app.damnvulnerablebank.CurrencyRates
 dz> run app.activity.start --component com.app.damnvulnerablebank com.app.damnvulnerablebank.SendMoney
