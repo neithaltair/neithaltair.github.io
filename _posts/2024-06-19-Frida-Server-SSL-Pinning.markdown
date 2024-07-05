@@ -14,7 +14,7 @@ tags: [SSL Pinning, Server, Pentesting]
 > adb shell getprp ro.product.cpu.abi
 ```
 
-4. Tener instalado Magisk (Solo si la aplicación no permite la ejecución en dispositivos root). 
+4. Tener instalado Magisk (Solo si la aplicación no permite la ejecución en dispositivos root, para agregar la aplicacion objetivo en la lista de denegación). 
 
 ``` bash
 > adb push frida-server-16.3.3-android-arm64 /data/local/tmp
@@ -36,14 +36,44 @@ tags: [SSL Pinning, Server, Pentesting]
 > pip3 install -r requirements.txt
 > python3 setup.py
 > sudo pip3 install --upgrade objection
+```
+
+`Ejecutar comando de frida para listar aplicaciones`
+
+``` bash
+frida-ps -U -a
+
+objection -g com.aplicacion.nombre explore
+
+> android sslpinning disable
+```
 
 
+``` bash
 > sudo nano drozer.sh
 adb forward tcp:31415 tcp:31415
 sudo docker run --net host -it withsecurelabs/drozer console connect --server localhost
 #Se crea el enlace simbólico para que solo sea ejecutar nombre de la herramienta. 
 sudo ln -S /home/kali/Documents/drozer/drozer.sh /usr/data/bin/drozer
 ``` 
+
+`Instalación apk vulnerable`
+```bash
+$ adb install sieve.apk
+Performing Streamed Install
+adb: failed to install sieve.apk: Failure [INSTALL_FAILED_DEPRECATED_SDK_VERSION: App package must target at least SDK version 23, but found 17]
+
+#Solución error
+1. Descomprimir apk para modificar el apktool.yml y cambiar el valor del target SDK version.
+
+sdkInfo:
+  minSdkVersion: 18
+  targetSdkVersion: 24
+
+2. Empaquetar, firmar de nuevo el archivo y volver a instalar.
+
+3. Funciona, sale un error de compatibilidad, pero funciona, 
+```
 
 `DROZER`
 
@@ -149,6 +179,9 @@ dz> run app.activity.start --component com.app.damnvulnerablebank com.app.damnvu
 adb shell am start -n com.app.damnvulnerablebank/com.app.damnvulnerablebank.SendMoney
 
 #Content provider / Services
+#list service
+dz> run app.service.info -a com.app.damnvulnerablebank
+
 
 ```
 
